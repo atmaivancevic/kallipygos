@@ -23,13 +23,13 @@ cat "$i"_genes.out | awk '{print $2 " " $9 " " $10 " " $1}' | awk '{if ($2 > $3)
 
 cat "$i".plus.tmp "$i".minus.tmp | awk '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" "1" "\t" $5}' > "$i".both.tmp;
 
-bedtools sort -i "$i".both.tmp | bedtools merge -s -i test.both.sorted.tmp -c 4 -o collapse -d 1000000 | awk '{print $1 "\t" $2 "\t" $3 "\t" $5 "\t" "1" "\t" $4}' > "$i"_genes.bed;
+bedtools sort -i "$i".both.tmp | bedtools merge -s -i - -c 4 -o collapse -d 1000000 | awk '{print $1 "\t" $2 "\t" $3 "\t" $5 "\t" "1" "\t" $4}' > "$i"_genes.bed;
 
 bedtools getfasta -s -fi "$i"/*.fa -bed "$i"_genes.bed -fo "$i"_genes.fasta;
 
 done
 
-# remove all those temporary files
+# remove temporary files
 rm *.tmp
 
 # Download to local comp
