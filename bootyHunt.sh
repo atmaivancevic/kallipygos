@@ -18,5 +18,5 @@ do
 bedtools getfasta -s -fi "$i"/*.fa -bed "$i"_genes.bed -fo "$i"_genes.fasta;
 done
 
-# Align to 143bp SNP region (from Callipyge sheep paper, Freking et al, 2002)
+# Align to 143bp SNP region from Callipyge sheep paper (Freking et al, 2002)
 # And check if A or G
